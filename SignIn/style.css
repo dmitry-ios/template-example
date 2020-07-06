@@ -1,0 +1,174 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 2 version,not dead,not ie <= 11
+*/
+
+/* Variables */
+
+:root {
+  --basic-text-black: #0f121f;
+  --basic-white: #ffffff;
+
+  --special-orange: #eb4335;
+  --special-pink: rgba(235, 67, 53, 0.5);
+
+  --special-sky: #5da8dc;
+  --special-light-blue: rgba(93, 168, 220, 0.9);
+}
+
+/* General */
+
+html {
+  height: 100%;
+}
+
+body {
+  display: grid;
+  align-items: center;
+  min-height: 100%;
+  font-family: "Muli", "Arial", sans-serif;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 23px;
+  text-align: center;
+  color: var(--basic-text-black);
+  background-color: var(--basic-text-black);
+}
+
+a {
+  text-decoration: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.signin-container {
+  padding: 70px 79px;
+  padding-bottom: 60px;
+}
+
+/* Sign In */
+
+.close-button {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 35px;
+  height: 35px;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  background-image: url("img/close-icon.svg");
+  background-repeat: no-repeat;
+}
+
+.close-button:hover,
+.close-button:focus {
+  opacity: 0.5;
+}
+
+.close-button:active {
+  opacity: 0.9;
+}
+
+.signin-modal {
+  position: relative;
+  background-color: var(--basic-white);
+  width: 537px;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+.signin-modal h2 {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 30px;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.signin-modal .information {
+  margin: 0;
+  margin-bottom: 50px;
+}
+
+.terms-and-policy {
+  font-size: 16px;
+  line-height: 20px;
+  padding-top: 30px;
+  margin: 0;
+  padding-left: 36px;
+  padding-right: 38px;
+}
+
+.login-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.login-list a {
+  color: inherit;
+  display: inline-block;
+  width: 281px;
+  height: 65px;
+  padding: 21px 65px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  text-align: left;
+}
+
+.login-google {
+  position: relative;
+  border: 1px solid var(--special-orange);
+}
+
+.login-google::before {
+  display: inline-block;
+  position: absolute;
+  left: 25px;
+  top: 17px;
+  content: "";
+  background-image: url("img/google-icon.png");
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 31px;
+}
+
+.login-google:hover,
+.login-google:focus {
+  box-shadow: 0px 4px 17px -9px var(--special-pink);
+}
+
+.login-twitter {
+  position: relative;
+  border: 1px solid var(--special-sky);
+}
+
+.login-twitter::before {
+  display: inline-block;
+  position: absolute;
+  left: 25px;
+  top: 21px;
+  content: "";
+  background-image: url("img/twitter-icon.png");
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 25px;
+}
+
+.login-twitter:hover {
+  box-shadow: 0px 4px 17px -9px var(--special-light-blue);
+}
