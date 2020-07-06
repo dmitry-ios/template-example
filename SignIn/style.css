@@ -112,6 +112,20 @@ a {
   padding-right: 38px;
 }
 
+.terms-and-policy a {
+  color: inherit;
+}
+
+.terms-and-policy a:hover,
+.terms-and-policy a:focus {
+  text-decoration: underline;
+}
+
+.terms-and-policy a:active {
+  text-decoration: none;
+  opacity: 0.3;
+}
+
 .login-list {
   list-style: none;
   padding: 0;
