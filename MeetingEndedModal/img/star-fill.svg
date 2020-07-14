@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="45px" height="45px" viewBox="0 0 45 45" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <desc>Created with Lunacy</desc>
+  <defs>
+    <path d="M17.4755 27.5625L6.6745 33.2413L8.73775 21.2135L0 12.6963L12.075 10.9428L17.4755 0L22.876 10.9428L34.951 12.6963L26.2132 21.2135L28.2765 33.2413L17.4755 27.5625Z" id="path_1" />
+    <clipPath id="mask_1">
+      <use xlink:href="#path_1" />
+    </clipPath>
+  </defs>
+  <g id="Group-Copy-2" transform="translate(1.3125 1.3125)">
+    <path d="M0 0L42 0L42 42L0 42L0 0Z" id="Path" fill="none" stroke="none" />
+    <g id="Path-2" transform="translate(3.52002 3.5)">
+      <path d="M17.4755 27.5625L6.6745 33.2413L8.73775 21.2135L0 12.6963L12.075 10.9428L17.4755 0L22.876 10.9428L34.951 12.6963L26.2132 21.2135L28.2765 33.2413L17.4755 27.5625Z" id="Mask" fill="#F3D779" stroke="none" />
+      <g clip-path="url(#mask_1)">
+        <path d="M16.2 0L0 37.2L27.6 37.2L34.2 1.2L16.2 0Z" transform="translate(12.08002 0.09997559)" id="Path-2" fill="#EEC45F" stroke="none" />
+      </g>
+    </g>
+  </g>
+</svg>
