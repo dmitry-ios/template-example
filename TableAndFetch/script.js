@@ -1,5 +1,7 @@
 'use strict';
 
+let tableData = {};
+
 const denormalizeComments = (comments) => {
   const result = comments.reduce((previousValue, item, index, array) => {
     if (!previousValue[item.postId]) {
@@ -120,30 +122,38 @@ const renderTable = (data) => {
   document.body.prepend(table);
 };
 
-let tableData = {};
+const createTable = (usersData, commentsData, postsData) => {
+  let users = denormalizeUsers(usersData);
+  let comments = denormalizeComments(commentsData);
 
-fetch(`https://jsonplaceholder.typicode.com/users`)
-  .then((usersResponse) => usersResponse.json())
-  .then((usersData) => {
+  denormalizeData(postsData, comments, users);
+  renderTable(users);
 
-    fetch(`https://jsonplaceholder.typicode.com/comments`)
-      .then((commentsResponse) => commentsResponse.json())
-      .then((commentsData) => {
+  tableData = users;
+};
 
-        fetch(`https://jsonplaceholder.typicode.com/posts`)
-          .then((postsResponse) => postsResponse.json())
-          .then((postsData) => {
+const loadPosts = (usersData, commentsData) => {
+  fetch(`https://jsonplaceholder.typicode.com/posts`)
+    .then((postsResponse) => postsResponse.json())
+    .then((postsData) => {
+      createTable(usersData, commentsData, postsData);
+    });
+};
 
-            let users = denormalizeUsers(usersData);
-            let comments = denormalizeComments(commentsData);
+const loadComments = (usersData) => {
+  fetch(`https://jsonplaceholder.typicode.com/comments`)
+    .then((commentsResponse) => commentsResponse.json())
+    .then((commentsData) => {
+      loadPosts(usersData, commentsData);
+    });
+};
 
-            denormalizeData(postsData, comments, users);
-            renderTable(users);
+const loadUsers = () => {
+  fetch(`https://jsonplaceholder.typicode.com/users`)
+    .then((usersResponse) => usersResponse.json())
+    .then((usersData) => {
+      loadComments(usersData);
+    });
+};
 
-            tableData = users;
-
-          });
-
-      });
-
-  });
+loadUsers();
