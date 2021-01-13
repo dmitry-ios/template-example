@@ -139,6 +139,8 @@ const renderTableBody = (data) => {
 const renderTable = (data) => {
   const table = document.createElement(`table`);
 
+  table.classList.add(`table`);
+
   table.append(renderTableHead());
   table.append(renderTableBody(data));
 
