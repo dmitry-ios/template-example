@@ -1,6 +1,11 @@
 'use strict';
 
+const API_GET_COMMENTS = `https://jsonplaceholder.typicode.com/comments`;
+const API_GET_POSTS = `https://jsonplaceholder.typicode.com/posts`;
+const API_GET_USERS = `https://jsonplaceholder.typicode.com/users`;
+
 let tableData = {};
+let isLoading = false;
 
 const denormalizeComments = (comments) => {
   const result = comments.reduce((previousValue, item, index, array) => {
@@ -76,14 +81,32 @@ const renderRowTemplate = (name) => {
   return row;
 };
 
-const renderTableRow = (postId, name, title, length) => {
-  const postRow = renderRowTemplate(name);
+const renderTableRow = (postId, user, title, length) => {
+  const postRow = renderRowTemplate(user.name);
 
   const titleCell = document.createElement(`td`);
   const commentsCell = document.createElement(`td`);
 
   postRow.addEventListener(`click`, (evt) => {
-    console.log(postId);
+    if (isLoading) {
+      return;
+    }
+
+    isLoading = true;
+
+    const array = [``, `.`, `..`, `...`];
+    let currentIndex = 0;
+
+    const timerId = setInterval(() => {
+      commentsCell.textContent = array[currentIndex];
+      currentIndex = (currentIndex + 1) % array.length;
+    }, 250);
+
+    updateData(user, postId, (length) => {
+      clearInterval(timerId);
+      isLoading = false;
+      commentsCell.textContent = length;
+    });
   });
 
   postRow.style = `cursor: pointer;`;
@@ -104,7 +127,7 @@ const renderTableBody = (data) => {
     const user = data[userId];
 
     user.posts.forEach((post) => {
-      const postRow = renderTableRow(post.id, user.name, post.title, post.comments.length);
+      const postRow = renderTableRow(post.id, user, post.title, post.comments.length);
 
       tbody.append(postRow);
     });
@@ -122,6 +145,20 @@ const renderTable = (data) => {
   document.body.prepend(table);
 };
 
+const updateData = (user, postId, callback) => {
+  let post = user.posts.filter((post) => { post.id === postId});
+
+  if (post) {
+    fetch(API_GET_COMMENTS)
+    .then((commentsResponse) => commentsResponse.json())
+    .then((commentsData) => {
+      let comments = commentsData.filter((item) => item.postId === postId);
+      post.comments = comments;
+      callback(comments.length);
+    });
+  }
+};
+
 const createTable = (usersData, commentsData, postsData) => {
   let users = denormalizeUsers(usersData);
   let comments = denormalizeComments(commentsData);
@@ -133,7 +170,7 @@ const createTable = (usersData, commentsData, postsData) => {
 };
 
 const loadPosts = (usersData, commentsData) => {
-  fetch(`https://jsonplaceholder.typicode.com/posts`)
+  fetch(API_GET_POSTS)
     .then((postsResponse) => postsResponse.json())
     .then((postsData) => {
       createTable(usersData, commentsData, postsData);
@@ -141,7 +178,7 @@ const loadPosts = (usersData, commentsData) => {
 };
 
 const loadComments = (usersData) => {
-  fetch(`https://jsonplaceholder.typicode.com/comments`)
+  fetch(API_GET_COMMENTS)
     .then((commentsResponse) => commentsResponse.json())
     .then((commentsData) => {
       loadPosts(usersData, commentsData);
@@ -149,7 +186,7 @@ const loadComments = (usersData) => {
 };
 
 const loadUsers = () => {
-  fetch(`https://jsonplaceholder.typicode.com/users`)
+  fetch(API_GET_USERS)
     .then((usersResponse) => usersResponse.json())
     .then((usersData) => {
       loadComments(usersData);
