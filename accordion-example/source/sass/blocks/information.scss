@@ -1,0 +1,40 @@
+.information {
+  margin: 124px auto;
+  padding-top: 65px;
+  width: 701px;
+
+  background-color: $basic-white-color;
+  box-shadow: 0 28px 40px -20px rgba(107, 99, 255, 0.306079);
+  border-radius: 5px;
+
+  @media (max-width: $mobile-width-only) {
+    width: 100%;
+  }
+}
+
+.information__inner {
+  padding: 0 70px;
+}
+
+.information__title {
+  padding-bottom: 66px;
+
+  border-bottom: 1px solid $basic-light-blue-color;
+}
+
+.information__title h2 {
+  margin: 0;
+
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: bold;
+}
+
+.information__title p {
+  margin: 0;
+  margin-top: 30px;
+
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: normal;
+}
