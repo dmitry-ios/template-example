@@ -3,6 +3,10 @@
   padding-bottom: 95px;
 
   font-size: 16px;
+
+  @media (max-width: $mobile-width-only) {
+    font-size: 14px;
+  }
 }
 
 .accordion__title {
@@ -119,11 +123,28 @@
 
   background: $basic-blue-color;
   border-radius: 60px;
+
+  &:focus,
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &:active {
+    opacity: 0.3;
+  }
+
+  @media (max-width: $mobile-width-only) {
+    font-weight: normal;
+  }
 }
 
 .accordion__content {
   padding-left: 78px;
   padding-right: 50px;
+
+  @media (max-width: $mobile-width-only) {
+    padding-right: 25px;
+  }
 }
 
 .accordion__item--close {

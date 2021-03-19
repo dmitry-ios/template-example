@@ -8,12 +8,18 @@
   border-radius: 5px;
 
   @media (max-width: $mobile-width-only) {
+    padding-top: 35px;
+    margin: 55px auto;
     width: 100%;
   }
 }
 
 .information__inner {
   padding: 0 70px;
+
+  @media (max-width: $mobile-width-only) {
+    padding: 0 20px;
+  }
 }
 
 .information__title {
@@ -28,6 +34,10 @@
   font-size: 22px;
   line-height: 28px;
   font-weight: bold;
+
+  @media (max-width: $mobile-width-only) {
+    font-size: 19px;
+  }
 }
 
 .information__title p {
@@ -37,4 +47,8 @@
   font-size: 18px;
   line-height: 28px;
   font-weight: normal;
+
+  @media (max-width: $mobile-width-only) {
+    font-size: 15px;
+  }
 }
