@@ -1,0 +1,14 @@
+/* Common */
+
+@import "normalize.scss";
+@import "fonts.scss";
+@import "variables.scss";
+@import "scaffolding.scss";
+
+
+/* Blocks */
+
+@import "blocks/page.scss";
+@import "blocks/main-header.scss";
+@import "blocks/main-footer.scss";
+@import "blocks/carousel.scss";
